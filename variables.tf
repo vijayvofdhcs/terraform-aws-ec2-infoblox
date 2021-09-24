@@ -56,13 +56,6 @@ variable "instance_count" {
   description = "Desired number of EC2 instances to run in Autoscaling Group."
   default     = 1
 }
-
-# variable "asg_max_size" {
-#   type        = number
-#   description = "Max number of EC2 instances to run in Autoscaling Group."
-#   default     = 1
-# }
-
 variable "ssh_key_pair_name" {
   type        = string
   description = "Name of existing SSH key pair to configure for EC2 instances."

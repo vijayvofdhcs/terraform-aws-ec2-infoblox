@@ -1,6 +1,11 @@
 # terraform-aws-tfc-agents-ec2
 Terraform module to deploy EC2 instances within an Autoscaling Group that run one or more Terraform Cloud Agents.
 
+## Prereqs
+- Agent Pool configured in either TFC/TFE
+- Agent Token
+<p>&nbsp;</p>
+
 ## Usage
 ```hcl
 module "agents" {
@@ -21,7 +26,7 @@ module "agents" {
 ```
 
 > Note: see the [tests/main](./tests/main) directory for an example Terraform configuration to deploy this module.  
-> Populate the [terraform.tfvars.example](./tests/main/terraform.tfvars.example) with meaningful values and remove the `.example` extension.
+> Populate the [terraform.tfvars.example](./tests/main/terraform.tfvars.example) with meaningful values and remove the `.example` file extension.
 <p>&nbsp;</p>
 
 ### Instances
