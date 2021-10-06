@@ -1,9 +1,10 @@
 # terraform-aws-tfc-agents-ec2
-Terraform module to deploy EC2 instances within an Autoscaling Group that run one or more Terraform Cloud Agents.
+Terraform module to deploy EC2 instances within an Autoscaling Group that run one or more Terraform Cloud Agents. This works with both Terraform Cloud and Terraform Enterprise.
 
 ## Prereqs
 - Agent Pool configured in either TFC/TFE
 - Agent Token
+- AWS VPC and Subnet(s)
 <p>&nbsp;</p>
 
 ## Usage
