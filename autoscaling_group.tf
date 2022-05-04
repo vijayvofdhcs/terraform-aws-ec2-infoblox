@@ -1,4 +1,29 @@
 #--------------------------------------------------------------------------------------------------
+# Ubuntu AMI
+#--------------------------------------------------------------------------------------------------
+data "aws_ami" "ubuntu" {
+  count = var.ami_id == null ? 1 : 0
+
+  owners      = ["099720109477", "513442679011"]
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  filter {
+    name   = "state"
+    values = ["available"]
+  }
+}
+
+#--------------------------------------------------------------------------------------------------
 # Launch Template
 #--------------------------------------------------------------------------------------------------
 locals {
@@ -78,30 +103,5 @@ resource "aws_autoscaling_group" "agents" {
       value               = tag.value
       propagate_at_launch = false
     }
-  }
-}
-
-#--------------------------------------------------------------------------------------------------
-# Ubuntu AMI
-#--------------------------------------------------------------------------------------------------
-data "aws_ami" "ubuntu" {
-  count = var.ami_id == null ? 1 : 0
-
-  owners      = ["099720109477", "513442679011"]
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  filter {
-    name   = "state"
-    values = ["available"]
   }
 }

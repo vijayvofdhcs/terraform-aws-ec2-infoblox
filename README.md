@@ -2,7 +2,7 @@
 Terraform module to deploy EC2 instances within an Autoscaling Group that run one or more Terraform Cloud Agents. This works with both Terraform Cloud and Terraform Enterprise.
 
 ## Prereqs
-- Agent Pool configured in either TFC/TFE
+- Agent Pool configured in either Terraform Cloud (TFC) or Terraform Enterprise (TFE)
 - Agent Token
 - AWS VPC and Subnet(s)
 <p>&nbsp;</p>
@@ -12,25 +12,24 @@ Terraform module to deploy EC2 instances within an Autoscaling Group that run on
 module "agents" {
   source = "../.."
 
-  friendly_name_prefix = var.friendly_name_prefix
-  common_tags          = var.common_tags
-
+  friendly_name_prefix   = var.friendly_name_prefix
+  common_tags            = var.common_tags
   vpc_id                 = var.vpc_id
   subnet_ids             = var.subnet_ids
   cidr_ingress_ssh_allow = var.cidr_ingress_ssh_allow
   ssh_key_pair_name      = var.ssh_key_pair_name
-
-  tfc_agent_token  = var.tfc_agent_token
-  tfc_agent_name   = var.tfc_agent_name
-  number_of_agents = var.number_of_agents
+  tfc_agent_token        = var.tfc_agent_token
+  tfc_agent_name         = var.tfc_agent_name
+  number_of_agents       = var.number_of_agents
 }
 ```
 
-> Note: see the [tests/main](./tests/main) directory for an example Terraform configuration to deploy this module.  
-> Populate the [terraform.tfvars.example](./tests/main/terraform.tfvars.example) with meaningful values and remove the `.example` file extension.
+
+> See the [tests/main](./tests/main) directory for an example Terraform configuration to deploy this module.  
+> Populate the [terraform.tfvars.example](./tests/main/terraform.tfvars.example) with your own unique values and remove the `.example` file extension before running Terraform.
 <p>&nbsp;</p>
 
-### Instances
+### EC2 Instances
 - By default, the marketplace Ubuntu 20.04 image will be used for the EC2 instance(s).
 - A custom AMI may be used by specifying a value for the input variable `ami_id`.
 - By default, one instance will be deployed within the Autoscaling Group (ASG).

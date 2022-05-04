@@ -2,7 +2,7 @@ friendly_name_prefix = "cloud-team"
 common_tags = {
   Owner     = "cloud-team"
   Terraform = "cli"
-  Env       = "tests-main"
+  Env       = "tests/main"
 }
 
 vpc_id                 = "vpc-00000000000000000"

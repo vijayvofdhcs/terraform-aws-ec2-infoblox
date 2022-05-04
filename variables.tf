@@ -56,6 +56,7 @@ variable "instance_count" {
   description = "Desired number of EC2 instances to run in Autoscaling Group."
   default     = 1
 }
+
 variable "ssh_key_pair_name" {
   type        = string
   description = "Name of existing SSH key pair to configure for EC2 instances."
@@ -78,12 +79,12 @@ variable "tfc_agent_name" {
 variable "tfc_agent_version" {
   type        = string
   description = "Version of tfc-agent to run."
-  default     = "0.4.1"
+  default     = "1.2.0"
 }
 
 variable "tfc_address" {
   type        = string
-  description = "Hostname of self-hosted TFE instance. Leave default if TFC is in use."
+  description = "Hostname of self-hosted TFE instance. Leave default for TFC."
   default     = "app.terraform.io"
 }
 
